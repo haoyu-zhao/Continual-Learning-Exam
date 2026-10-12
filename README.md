@@ -131,6 +131,10 @@ Ranked by **Trial 2 − Trial 1**, in percentage points. Ties are ordered by Tri
 
 [Explore the interactive leaderboard →](https://haoyu-zhao.github.io/CLE/leaderboard/) · [Download results (CSV)](https://haoyu-zhao.github.io/CLE/data/results.csv)
 
+## Quick Start
+
+Todo
+
 ## Citation
 
 For now, please use the provisional manuscript citation:
