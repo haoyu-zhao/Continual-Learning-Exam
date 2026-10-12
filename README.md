@@ -61,29 +61,59 @@ Explore **five public task examples**, with all **25 level instructions** and th
 
 ## Model Leaderboard
 
-The main evaluation compares **17 configurations** spanning **11 model variants** and **4 harnesses**: Claude Code, Codex, Hermes-Agent, and OpenClaw.
+The main evaluation compares **17 configurations** spanning **11 model variants** and **4 harnesses**: Claude Code, Codex, Hermes-Agent, and OpenClaw. Each row identifies the model and its harness; results reflect the complete configuration.
 
-Rows are ranked by **Trial 2 completion across all 600 levels**. Each row identifies the model and its harness; results reflect the complete configuration. Trial 1 allows one submission per level. Trial 2 adds diagnostic feedback after a failed submission and one opportunity to revise. **Δ** is the change in percentage points.
+Trial 1 allows one submission per level. Trial 2 adds diagnostic feedback after a failed submission and one opportunity to revise.
 
-| Rank | Model | Harness | Trial 1 | Trial 2 | Δ (pp) |
+[Completion Rate](#completion-rate) · [Gain](#gain)
+
+### Completion Rate
+
+Ranked by **Trial 2 completion across all 600 levels**.
+
+| Rank | Model | Harness | Completion Rate |
+| :---: | :--- | :--- | ---: |
+| 🥇 | **Claude Opus 5** | Claude Code | **47.67%** |
+| 🥈 | **Claude Sonnet 5** | Claude Code | **40.17%** |
+| 🥉 | **Gemini 3.7 Flash** | Hermes-Agent | **33.67%** |
+| 4 | GPT-5.6-Sol | Codex | 33.17% |
+| 5 | GPT-5.6-Terra | Codex | 33.17% |
+| 6 | Doubao-Seed-Evolving | Hermes-Agent | 30.00% |
+| 7 | DeepSeek V4 Pro | Hermes-Agent | 27.33% |
+| 8 | Hy3 | Hermes-Agent | 27.33% |
+| 9 | Qwen3.8-Max | Hermes-Agent | 26.67% |
+| 10 | GPT-5.6-Luna | Codex | 25.33% |
+| 11 | Gemini 3.7 Flash | OpenClaw | 24.00% |
+| 12 | GLM 5.3 | Hermes-Agent | 24.00% |
+| 13 | Doubao-Seed-Evolving | OpenClaw | 21.17% |
+| 14 | Qwen3.8-Max | OpenClaw | 19.83% |
+| 15 | Hy3 | OpenClaw | 14.00% |
+| 16 | GLM 5.3 | OpenClaw | 11.50% |
+| 17 | DeepSeek V4 Pro | OpenClaw | 10.00% |
+
+### Gain
+
+Ranked by **Trial 2 − Trial 1**, in percentage points. Ties are ordered by Trial 2 completion, then model name.
+
+| Rank | Model | Harness | Gain (pp) | Trial 1 | Trial 2 |
 | :---: | :--- | :--- | ---: | ---: | ---: |
-| **1** | **Claude Opus 5** | **Claude Code** | **42.17%** | **47.67%** | **+5.50** |
-| 2 | Claude Sonnet 5 | Claude Code | 27.00% | 40.17% | +13.17 |
-| 3 | Gemini 3.7 Flash | Hermes-Agent | 25.33% | 33.67% | +8.33 |
-| 4 | GPT-5.6-Sol | Codex | 27.83% | 33.17% | +5.33 |
-| 5 | GPT-5.6-Terra | Codex | 27.83% | 33.17% | +5.33 |
-| 6 | Doubao-Seed-Evolving | Hermes-Agent | 20.33% | 30.00% | +9.67 |
-| 7 | DeepSeek V4 Pro | Hermes-Agent | 21.83% | 27.33% | +5.50 |
-| 8 | Hy3 | Hermes-Agent | 20.33% | 27.33% | +7.00 |
-| 9 | Qwen3.8-Max | Hermes-Agent | 25.67% | 26.67% | +1.00 |
-| 10 | GPT-5.6-Luna | Codex | 20.33% | 25.33% | +5.00 |
-| 11 | Gemini 3.7 Flash | OpenClaw | 18.67% | 24.00% | +5.33 |
-| 12 | GLM 5.3 | Hermes-Agent | 22.50% | 24.00% | +1.50 |
-| 13 | Doubao-Seed-Evolving | OpenClaw | 14.50% | 21.17% | +6.67 |
-| 14 | Qwen3.8-Max | OpenClaw | 18.17% | 19.83% | +1.67 |
-| 15 | Hy3 | OpenClaw | 9.83% | 14.00% | +4.17 |
-| 16 | GLM 5.3 | OpenClaw | 6.17% | 11.50% | +5.33 |
-| 17 | DeepSeek V4 Pro | OpenClaw | 11.33% | 10.00% | −1.33 |
+| 🥇 | **Claude Sonnet 5** | Claude Code | **+13.17** | 27.00% | 40.17% |
+| 🥈 | **Doubao-Seed-Evolving** | Hermes-Agent | **+9.67** | 20.33% | 30.00% |
+| 🥉 | **Gemini 3.7 Flash** | Hermes-Agent | **+8.33** | 25.33% | 33.67% |
+| 4 | Hy3 | Hermes-Agent | +7.00 | 20.33% | 27.33% |
+| 5 | Doubao-Seed-Evolving | OpenClaw | +6.67 | 14.50% | 21.17% |
+| 6 | Claude Opus 5 | Claude Code | +5.50 | 42.17% | 47.67% |
+| 7 | DeepSeek V4 Pro | Hermes-Agent | +5.50 | 21.83% | 27.33% |
+| 8 | GPT-5.6-Sol | Codex | +5.33 | 27.83% | 33.17% |
+| 9 | GPT-5.6-Terra | Codex | +5.33 | 27.83% | 33.17% |
+| 10 | Gemini 3.7 Flash | OpenClaw | +5.33 | 18.67% | 24.00% |
+| 11 | GLM 5.3 | OpenClaw | +5.33 | 6.17% | 11.50% |
+| 12 | GPT-5.6-Luna | Codex | +5.00 | 20.33% | 25.33% |
+| 13 | Hy3 | OpenClaw | +4.17 | 9.83% | 14.00% |
+| 14 | Qwen3.8-Max | OpenClaw | +1.67 | 18.17% | 19.83% |
+| 15 | GLM 5.3 | Hermes-Agent | +1.50 | 22.50% | 24.00% |
+| 16 | Qwen3.8-Max | Hermes-Agent | +1.00 | 25.67% | 26.67% |
+| 17 | DeepSeek V4 Pro | OpenClaw | −1.33 | 11.33% | 10.00% |
 
 [Explore the interactive leaderboard →](https://haoyu-zhao.github.io/CLE/leaderboard/) · [Download results (CSV)](https://haoyu-zhao.github.io/CLE/data/results.csv)
 
