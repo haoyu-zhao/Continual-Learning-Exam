@@ -28,10 +28,9 @@
 </p>
 
 <p align="center">
-  <a href="#release-status"><img src="https://img.shields.io/badge/arXiv-Pending-6E7681?style=flat-square&amp;logo=arxiv&amp;logoColor=white" alt="arXiv: pending"></a>
-  <a href="#release-status"><img src="https://img.shields.io/badge/HF_Daily_Paper-Pending-6E7681?style=flat-square" alt="HF Daily Paper: pending"></a>
+  <a href="#upcoming-features--improvements"><img src="https://img.shields.io/badge/arXiv-Pending-6E7681?style=flat-square&amp;logo=arxiv&amp;logoColor=white" alt="arXiv: pending"></a>
+  <a href="#upcoming-features--improvements"><img src="https://img.shields.io/badge/HF_Daily_Paper-Pending-6E7681?style=flat-square" alt="HF Daily Paper: pending"></a>
   <a href="#upcoming-features--improvements"><img src="https://img.shields.io/badge/Harbor_Format-Planned-6E7681?style=flat-square" alt="Harbor format for CLE Lite: planned"></a>
-  <a href="#release-status"><img src="https://img.shields.io/badge/Trajectories-Not_Released-6E7681?style=flat-square" alt="Trajectories: not released"></a>
 </p>
 
 ## About CLE
@@ -87,12 +86,6 @@ Rows are ranked by **Trial 2 completion across all 600 levels**. Each row identi
 | 17 | DeepSeek V4 Pro | OpenClaw | 11.33% | 10.00% | −1.33 |
 
 [Explore the interactive leaderboard →](https://haoyu-zhao.github.io/CLE/leaderboard/) · [Download results (CSV)](https://haoyu-zhao.github.io/CLE/data/results.csv)
-
-## Release Status
-
-The paper preview, website, results, and five task examples are available at the links above. This repository currently provides project information; runnable benchmark code and CLE Lite are not yet released.
-
-arXiv and HF Daily Paper links will be added when available. Harbor support for CLE Lite is planned, and standalone agent trajectories have not been released.
 
 ## Citation
 
