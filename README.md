@@ -15,33 +15,47 @@
 </p>
 
 <p align="center">
-  <a href="#tasks"><img src="https://img.shields.io/badge/Tasks-120-176B87?style=flat-square" alt="Tasks: 120"></a>
-  <a href="#model-leaderboard"><img src="https://img.shields.io/badge/Harnesses-4-7450A1?style=flat-square" alt="Harnesses: 4"></a>
-  <a href="#model-leaderboard"><img src="https://img.shields.io/badge/Models-11-247A68?style=flat-square" alt="Models: 11"></a>
-  <a href="https://haoyu-zhao.github.io/CLE/leaderboard/"><img src="https://img.shields.io/badge/Leaderboard-Explore-C45A32?style=flat-square" alt="Interactive leaderboard"></a>
+  <a href="#tasks"><img src="https://img.shields.io/badge/Tasks-120-007EC6?style=flat" alt="Tasks: 120"></a>
+  <a href="#model-leaderboard"><img src="https://img.shields.io/badge/Harnesses-4-8A2BE2?style=flat" alt="Harnesses: 4"></a>
+  <a href="#model-leaderboard"><img src="https://img.shields.io/badge/Models-11-2EA043?style=flat" alt="Models: 11"></a>
+  <a href="https://haoyu-zhao.github.io/CLE/leaderboard/"><img src="https://img.shields.io/badge/%F0%9F%8F%86_Leaderboard-Explore-E96900?style=flat" alt="Interactive leaderboard"></a>
 </p>
 
 <p align="center">
-  <a href="https://haoyu-zhao.github.io/CLE/"><img src="https://img.shields.io/badge/Website-CLE-17263B?style=flat-square" alt="CLE website"></a>
-  <a href="https://haoyu-zhao.github.io/CLE/assets/continual-learning-exam.pdf"><img src="https://img.shields.io/badge/PDF_Report-Read_Paper-B34D40?style=flat-square" alt="Read the paper (PDF)"></a>
-  <a href="https://huggingface.co/Continual-Learning-Exam"><img src="https://img.shields.io/badge/Hugging_Face-Datasets-E5B83D?style=flat-square&amp;logo=huggingface&amp;logoColor=white" alt="CLE datasets on Hugging Face"></a>
+  <a href="https://haoyu-zhao.github.io/CLE/"><img src="https://img.shields.io/badge/%F0%9F%8C%90_Website-CLE-0099CC?style=flat" alt="CLE website"></a>
+  <a href="https://haoyu-zhao.github.io/CLE/assets/continual-learning-exam.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84_Paper-PDF-E34C26?style=flat" alt="Read the paper (PDF)"></a>
+  <a href="https://huggingface.co/Continual-Learning-Exam"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-Datasets-FFCC00?style=flat" alt="CLE datasets on Hugging Face"></a>
 </p>
 
 <p align="center">
-  <a href="#upcoming-features--improvements"><img src="https://img.shields.io/badge/arXiv-Pending-6E7681?style=flat-square&amp;logo=arxiv&amp;logoColor=white" alt="arXiv: pending"></a>
-  <a href="#upcoming-features--improvements"><img src="https://img.shields.io/badge/HF_Daily_Paper-Pending-6E7681?style=flat-square" alt="HF Daily Paper: pending"></a>
-  <a href="#upcoming-features--improvements"><img src="https://img.shields.io/badge/Harbor_Format-Planned-6E7681?style=flat-square" alt="Harbor format for CLE Lite: planned"></a>
+  <a href="#todo"><img src="https://img.shields.io/badge/arXiv-Pending-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="arXiv: pending"></a>
+  <a href="#todo"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HF_Daily_Paper-Pending-FFCC00?style=flat" alt="HF Daily Paper: pending"></a>
+  <a href="#todo"><img src="https://img.shields.io/badge/%E2%9A%93_Harbor_Format-Planned-007EC6?style=flat" alt="Harbor format for CLE Lite: planned"></a>
 </p>
 
 ## About CLE
 
 **Continual Learning Exam (CLE)** measures whether agents can learn from experience and use it in later work. Built by **50+ domain experts**, the benchmark contains **120 human-authored tasks**, spanning **89 professional roles** across **12 domains**.
 
+<p align="center">
+  <a href="https://haoyu-zhao.github.io/CLE/#coverage-title">
+    <img src="assets/inside-cle.png" width="960" alt="CLE spans 12 professional domains: 120 tasks, 600 connected levels, 23,981 input files, and 16,125 rubric criteria.">
+  </a>
+</p>
+
+[Explore the interactive breakdown →](https://haoyu-zhao.github.io/CLE/#coverage-title)
+
 Each task is a ladder of **five connected assignments**, giving **600 levels** in total. Passing a level unlocks the next; files, environment state, and accumulated experience carry forward. Human-authored rubrics determine whether each submission passes.
 
-[Explore the benchmark design →](https://haoyu-zhao.github.io/CLE/docs/)
+<p align="center">
+  <a href="https://haoyu-zhao.github.io/CLE/#carry">
+    <img src="assets/what-carries-forward.png" width="960" alt="Five research assignments—from organising a reading list to delivering a reproduction package—share user context, data dependencies, strategy, tools and skills, and domain knowledge.">
+  </a>
+</p>
 
-## Upcoming Features & Improvements
+[Explore this example →](https://haoyu-zhao.github.io/CLE/#carry) · [Benchmark design](https://haoyu-zhao.github.io/CLE/docs/)
+
+## Todo
 
 - [ ] Release the paper and project website.
 - [ ] Release **CLE Lite**.
