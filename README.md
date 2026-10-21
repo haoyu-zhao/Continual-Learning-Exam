@@ -156,7 +156,7 @@ hf download Continual-Learning-Exam/CLE-Lite \
 cat ./CLE-Lite/001-equity-research-analyst/harbor/task/instruction.md
 ```
 
-To run an agent and score its work, follow the [CLE Lite Quick Start](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#quick-start) and [evaluation guide](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/blob/main/EVALUATION.md). The packaged runtime downloads and verifies a task, prepares its grader, and runs all five levels. The verified setup uses Linux, Docker, and Codex; it requires model access and at least 30 GB of disk space for the example task. Use the runtime's download command for evaluation so that file permissions and timestamps match the recorded release.
+To run an agent and score its work, follow the [CLE Lite Quick Start](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#quick-start) and [evaluation guide](https://github.com/haoyu-zhao/Continual-Learning-Exam/blob/main/docs/evaluation.md). The packaged runtime downloads and verifies a task, prepares its grader, and runs all five levels. The verified setup uses Linux, Docker, and Codex; it requires model access and at least 30 GB of disk space for the example task. Use the runtime's download command for evaluation so that file permissions and timestamps match the recorded release.
 
 For reproducible experiments, record the task and runtime revisions, model, and evaluation harness. The evaluation guide pins both revisions for its verified example. Cite the [CLE manuscript](#citation) and identify the CLE Lite dataset revision, as described in the [dataset citation guide](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#citation).
 
