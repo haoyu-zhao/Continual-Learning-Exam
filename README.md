@@ -65,13 +65,13 @@ Paper and website previews are available through the links above; the checklist 
 
 ## Tasks
 
-Explore **five public task examples** in the task browser, with all **25 level instructions** and their input materials. For downloadable packages, **CLE Lite** provides **20 tasks and 100 levels**. The main evaluation covers the full 120-task benchmark.
+Explore selected public task examples in the task browser, with level instructions and their input materials. For downloadable packages, **CLE Lite** provides **20 tasks and 100 levels**. The main evaluation covers the full 120-task benchmark.
 
 | Resource | What you can explore |
 | :--- | :--- |
 | [Task browser](https://haoyu-zhao.github.io/CLE/tasks/) | Read assignments, follow dependencies across levels, and preview files. |
-| [CLE Lite task cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Tasks) | Browse all 100 CLE Lite level instructions in the Hugging Face Dataset Viewer. |
-| [CLE Lite task inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Inputs) | Download the agent-facing files for the 20 CLE Lite tasks. |
+| [CLE Lite task cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) | Browse all 100 CLE Lite level instructions in the Hugging Face Dataset Viewer. |
+| [CLE Lite task inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces) | Download the agent-facing files for the 20 CLE Lite tasks. |
 
 ## Model Leaderboard
 
@@ -133,22 +133,22 @@ Ranked by **Trial 2 − Trial 1**, in percentage points. Ties are ordered by Tri
 
 ## Quick Start
 
-Start with **[CLE Lite](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite)**: 20 professional tasks, each with five connected levels. Its [dataset README](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#quick-start) explains the package layout, downloads, and evaluation requirements.
+Start with **[CLE Lite](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite)**: 20 professional tasks, each with five connected levels. Its public homepage contains 100 task cards and a [Quick Start](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#quick-start) for running an example. Download runnable packages from **CLE-Lite-Full**; the resources are listed below.
 
 | Resource | Contents | Access |
 | :--- | :--- | :--- |
-| [Task Cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Tasks) | All 100 assignments and their input-file inventories | Public |
-| [Task Inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Inputs) | Instructions and files supplied to agents | Public |
-| [Full Archive](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) | Complete task packages, container environments, and evaluation material | Approval required |
-| [References](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-References) | Evaluation rubrics and reference answers | Approval required |
+| [Task Cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) | All 100 assignments and their input-file inventories | Public |
+| [Task Inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces) | Instructions and files supplied to agents | Public |
+| [Full Archive](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full) | Complete task packages, container environments, and evaluation material | Approval required |
+| [References](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Rubrics) | Evaluation rubrics and reference answers | Approval required |
 
-To inspect a complete task, [request access to the archive](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite). Once approved, sign in and download the equity research analyst example:
+To inspect a complete task, [request access to the archive](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full). Once approved, sign in and download the equity research analyst example:
 
 ```bash
 pip install -U huggingface_hub
 hf auth login
 
-hf download Continual-Learning-Exam/CLE-Lite \
+hf download Continual-Learning-Exam/CLE-Lite-Full \
   --repo-type dataset \
   --include '001-equity-research-analyst/**' \
   --local-dir ./CLE-Lite
@@ -159,6 +159,8 @@ cat ./CLE-Lite/001-equity-research-analyst/harbor/task/instruction.md
 To run an agent and score its work, follow the [CLE Lite Quick Start](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#quick-start) and [evaluation guide](https://github.com/haoyu-zhao/Continual-Learning-Exam/blob/main/docs/evaluation.md). The packaged runtime downloads and verifies a task, prepares its grader, and runs all five levels. The verified setup uses Linux, Docker, and Codex; it requires model access and at least 30 GB of disk space for the example task. Use the runtime's download command for evaluation so that file permissions and timestamps match the recorded release.
 
 For reproducible experiments, record the task and runtime revisions, model, and evaluation harness. The evaluation guide pins both revisions for its verified example. Cite the [CLE manuscript](#citation) and identify the CLE Lite dataset revision, as described in the [dataset citation guide](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite#citation).
+
+The Lite example runs all five levels before grading. The [evaluation guide](https://github.com/haoyu-zhao/Continual-Learning-Exam/blob/main/docs/evaluation.md#relationship-to-the-main-experiment) explains how its protocol and judge configuration differ from the main experiment's Trial 1 and Trial 2.
 
 ## Citation
 

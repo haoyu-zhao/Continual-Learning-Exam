@@ -1,18 +1,18 @@
 # Run and evaluate CLE Lite
 
-[Back to the dataset README](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) · [Runtime script](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/blob/main/runtime/cle_lite.py) · [Verification record](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/blob/main/runtime/verification.json)
+[Back to the dataset README](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) · [Runtime script](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/main/runtime/cle_lite.py) · [Verification record](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/main/runtime/verification.json)
 
-This guide runs the Conversational Agent Evaluation task through all five levels and scores the submitted work. It preserves the setup and protocol from the maintainers' verified Linux run. In this guide, **solver** means the agent being evaluated, and **judge** means the grader that assesses its deliverables.
+This guide runs the Conversational Agent Evaluation task through all five levels and scores the submitted work. It uses the setup and protocol from the maintainers' verified Linux run, with the download address updated after the complete archive was renamed to **CLE-Lite-Full**. In this guide, **solver** means the agent being evaluated, and **judge** means the grader that assesses its deliverables.
 
-The runtime script is pinned to revision `026143c454983014232b83318a7c2db1578b51e0`; the task data is pinned separately below. Record both revisions when reporting an experiment.
+The runtime script is pinned to revision `811f03a38c894152f6df3f79ff1ebeda44a9a859`; the task data is pinned separately below. Record both revisions when reporting an experiment.
 
 ## Run the example
 
-The [`runtime/cle_lite.py`](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/blob/main/runtime/cle_lite.py) script downloads a task, prepares its environment, runs the agent, and scores its submissions. It uses the grader packaged with the task and checks that the task files and grader match the recorded release. Run evaluations through this script. The bundled `tests/test.sh` only signals to the host grader; running it directly does not score a submission.
+The [`runtime/cle_lite.py`](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/main/runtime/cle_lite.py) script downloads a task, prepares its environment, runs the agent, and scores its submissions. It uses the grader packaged with the task and checks that the task files and grader match the recorded release. Run evaluations through this script. The bundled `tests/test.sh` only signals to the host grader; running it directly does not score a submission.
 
 ### Prerequisites
 
-- Approved access to this dataset and a Hugging Face login for that account.
+- Approved access to [CLE Lite Full](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full) and a Hugging Face login for that account. The public CLE-Lite dataset contains task cards; runtime and task-package downloads come from CLE-Lite-Full.
 - A Linux host with Docker, the Docker Compose plugin, `curl`, and [uv](https://docs.astral.sh/uv/getting-started/installation/). The commands below were tested on Linux x86-64.
 - Node.js 22 or later and a Codex login with access to the selected model. Both the evaluated agent and the model used for grading consume inference usage.
 - Enough disk space for the inputs, downloaded-content cache, solver variant, Docker images and result artifacts. Reserve at least **30 GB for the example task**; other tasks can require more. A complete five-level run and grading can take several hours.
@@ -24,9 +24,9 @@ uv tool install huggingface_hub
 hf auth login
 
 # Fetch the runtime adapter and its Linux judge-container recipe.
-hf download Continual-Learning-Exam/CLE-Lite \
+hf download Continual-Learning-Exam/CLE-Lite-Full \
     --repo-type dataset \
-    --revision 026143c454983014232b83318a7c2db1578b51e0 \
+    --revision 811f03a38c894152f6df3f79ff1ebeda44a9a859 \
     --include 'runtime/*' --local-dir .
 
 TASK=019-computer-research-scientist
@@ -150,15 +150,23 @@ Report the following separately:
 - **Level completion**: a level's `whole` value is true only when all of its checks pass.
 - **Gated level count**: `ladder.gated` counts consecutive fully passed levels starting at `t1`, out of `ladder.of` (five).
 
-This Harbor adapter executes all five levels and calculates gated completion **afterward**. It does not stop execution immediately after a failed level. Describe this protocol when reporting results; do not equate its task reward, check fraction or post-hoc gated count with the full CLE leaderboard's stop-on-failure experiment.
+This Harbor adapter executes all five levels and calculates gated completion **afterward**. It does not stop execution immediately after a failed level. Its check fraction and post-hoc gated count are Lite runtime diagnostics; report them separately from the full CLE leaderboard.
+
+### Relationship to the main experiment
+
+The [paper's main experiment (§4.2 and §5.1)](https://haoyu-zhao.github.io/CLE/assets/continual-learning-exam.pdf) grades each submitted level before advancing. Trial 1 allows one submission per level. Trial 2 returns diagnostic feedback after a failed first submission and allows one revision. A failure after the submission budget is exhausted ends that task, and unreached levels count as failed. All 120 tasks run in a fixed serial order with retained harness state; the evaluation agent uses DeepSeek V4 Flash.
+
+The example here runs one task with grading after all five levels and uses GPT-6.1-Sol for model-based judgments. It does not implement the main experiment's per-level feedback and resubmission, stop-on-failure execution, or task stream with retained harness state. Completing this guide validates the Lite runtime workflow; it does not reproduce either main-experiment trial. The two protocols share the rule that a level passes only if every check passes.
 
 The oracle must satisfy the sealed scorer's control rules, and the nop must pass no checks. Model-based judgments can vary between runs; record the judge model and reasoning effort along with the solver model, task revision, grader identity and runtime versions. Keep rubrics, ground truth, references and judge-only setup outside the solver's accessible workspace throughout evaluation.
 
 ### Verified end-to-end example
 
-On 2026-10-21, the commands above were validated on Linux x86-64 with task `019-computer-research-scientist` at revision `04014384175aeb218c4ba7188612b1c76e87d3fc`. All five solver stages ran and the original host grader evaluated all 159 checks. Both controls satisfied the original control rules: oracle **159/159** (raw reward 1) and nop **0/159** (reward 0).
+On 2026-10-21, the workflow was validated on Linux x86-64 with task `019-computer-research-scientist` at revision `04014384175aeb218c4ba7188612b1c76e87d3fc`. All five solver stages ran and the original host grader evaluated all 159 checks. Both controls satisfied the original control rules: oracle **159/159** (raw reward 1) and nop **0/159** (reward 0).
 
-The real `gpt-6.1-sol` solver passed **158/159** checks, with task reward **0** and post-hoc gated completion **3/5**. The final stage (`t5`) reached its configured 60-minute agent budget; the original runner recorded the trial as valid with `execution = "budget_exhausted"` and graded the collected deliverables. Total agent time across the five stages was approximately 185 minutes. These are the observed results of a runtime validation run. See [`runtime/verification.json`](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/blob/main/runtime/verification.json) for the frozen grader identity, runtime versions and aggregate evidence; benchmark answers and private grading logs are not republished there.
+That run used adapter revision `026143c454983014232b83318a7c2db1578b51e0`, before the archive was renamed from CLE-Lite to CLE-Lite-Full. The adapter pinned above changes only the download repository name. The task snapshot, execution logic and grader are unchanged. The verification record retains the original repository name and adapter hashes as historical evidence; the full evaluation has not been rerun for this address correction.
+
+The real `gpt-6.1-sol` solver passed **158/159** checks, with task reward **0** and post-hoc gated completion **3/5**. The final stage (`t5`) reached its configured 60-minute agent budget; the original runner recorded the trial as valid with `execution = "budget_exhausted"` and graded the collected deliverables. Total agent time across the five stages was approximately 185 minutes. These are the observed results of a runtime validation run. See [`runtime/verification.json`](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/main/runtime/verification.json) for the frozen grader identity, runtime versions and aggregate evidence; benchmark answers and private grading logs are not republished there.
 
 ## Troubleshooting
 
