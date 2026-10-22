@@ -1,0 +1,34 @@
+{
+  "workspace_revision": "d8159f8d242140a478458732ea9f3816b7155a86",
+  "task_cards_revision": "69a34003cd3ec9fa8e1abca618dd41d9accd4b3b",
+  "rubrics_revision": "0f7aae1a9fa2b6542dc72dc329238367cd6a36e7",
+  "tasks": 20,
+  "levels": 100,
+  "occupations": 16,
+  "workspace_files": 59261,
+  "workspace_bytes": 29084108048,
+  "rubric_criteria_by_level": [
+    477,
+    556,
+    647,
+    749,
+    880
+  ],
+  "rubric_criteria": 3309,
+  "pjm_files_by_level": [
+    274,
+    23,
+    27,
+    11,
+    25
+  ],
+  "pjm_rubrics_by_level": [
+    25,
+    32,
+    37,
+    43,
+    50
+  ],
+  "workspace_file_entries": 59373,
+  "excluded_empty_gitkeep_files": 112
+}
