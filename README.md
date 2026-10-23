@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://haoyu-zhao.github.io/CLE/"><img src="assets/cle-mark.svg" width="44" height="44" align="middle" alt="CLE logo"></a>&nbsp;Continual Learning Exam
+  <a href="https://haoyu-zhao.github.io/CLE/"><img src="assets/cle-banner.svg" width="640" alt="Continual Learning Exam — CLE"></a>
 </h1>
 
 <p align="center">
@@ -8,6 +8,8 @@
 
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/contributors/"><strong>CLE Team</strong></a>
+  <br>
+  <strong>120</strong> Professional Tasks · <strong>5</strong> Connected Levels per Task · <strong>600</strong> Assignments
 </p>
 
 <p align="center">
