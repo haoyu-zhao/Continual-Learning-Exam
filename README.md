@@ -1,8 +1,5 @@
 <h1 align="center">
-  <a href="https://haoyu-zhao.github.io/CLE/">
-    <img src="assets/cle-mark.svg" width="44" height="44" align="middle" alt="CLE logo">
-  </a>
-  Continual Learning Exam
+  <a href="https://haoyu-zhao.github.io/CLE/"><img src="assets/cle-mark.svg" width="44" height="44" align="middle" alt="CLE logo"></a>&nbsp;Continual Learning Exam
 </h1>
 
 <p align="center">
