@@ -1,6 +1,6 @@
 # Run and evaluate CLE Lite
 
-[Dataset homepage](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) · [Project README](../README.md#quick-start) · [Runtime guide](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/258561d476dc9655fb30430920272631dc43e26a/runtime/README.md)
+[Dataset homepage](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) · [Project README](../README.md#quick-start) · [Custom task lists](#custom-task-lists) · [Scoring](#understand-the-scores)
 
 Run a single task or an ordered task sequence, then inspect the agent's submissions and scores. The examples below use task **008: Operations Research Analyst** and pin the runtime and task data to specific revisions.
 
@@ -179,9 +179,32 @@ python3 runtime/cle_lite.py stream \
     --codex-auth "$RSI_CODEX_AUTH_FILE" --results ./results/cle-stream-trial2-01
 ```
 
-Tasks run in the order specified by the task-list file. Its paths are relative to that file. See the [runtime guide](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/258561d476dc9655fb30430920272631dc43e26a/runtime/README.md) for state transfer, custom task lists, and score interpretation.
+Tasks run in the order specified by the task-list file. Its paths are relative to that file. See [Custom task lists](#custom-task-lists) to choose your own sequence.
 
 </details>
+
+### Custom task lists
+
+Create a JSON file with one `tasks` entry for each task you want to evaluate. Each entry names the task's `harbor/` bundle and the environment created by `setup`. For example, save this as `runtime/my-tasks.json`:
+
+```json
+{
+  "tasks": [
+    {
+      "bundle": "../CLE-Lite/008-operations-research-analyst/harbor",
+      "env": "../.cle-runtime-008-operations-research-analyst"
+    },
+    {
+      "bundle": "../CLE-Lite/019-computer-research-scientist/harbor",
+      "env": "../.cle-runtime-019-computer-research-scientist"
+    }
+  ]
+}
+```
+
+Download and prepare every listed task, then replace `--task-list runtime/lite-example-tasks.json` in a stream command with `--task-list runtime/my-tasks.json`. Paths are resolved relative to the JSON file. Reorder the entries to change the evaluation order.
+
+In a CLE stream, the agent retains its Codex conversation and the declared `/app/cle-memory/` directory between tasks. Each new task receives fresh task files and application services. Each Trial starts with its own initial state; `run.json` records the state transfers.
 
 ## Understand the scores
 
@@ -189,7 +212,7 @@ The [Quick start](#quick-start) explains how to select Direct or CLE mode. Both 
 
 - **Progression:** in CLE mode, the task ends when the agent exhausts its allowed submissions without passing, or runs out of execution time. Unreached levels count as failed.
 - **Time budget:** each level uses the execution budget recorded in its task package. Trial 2 submissions share that budget. Grading time is excluded.
-- **Feedback:** Trial 2 identifies unmet rubric categories. The current release uses the category `Deliverables`; see the [runtime guide](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full/blob/258561d476dc9655fb30430920272631dc43e26a/runtime/README.md#cle-trial-1-and-trial-2) for the category mapping. Private rubrics, reference answers, and judge logs stay outside the solver workspace.
+- **Feedback:** Trial 2 identifies unmet rubric categories. The current release uses the category `Deliverables`; see [Feedback categories](#feedback-categories) for how this maps to the task checklist. Private rubrics, reference answers, and judge logs stay outside the solver workspace.
 - **Errors:** runs interrupted by infrastructure or judge errors are marked invalid.
 
 For a CLE Lite evaluation, **completion = cleared levels / (5 × number of selected tasks)**. For example, clearing seven levels across two tasks gives 7/10, or **70% completion**. L1–L5 use the same cumulative definition as the table below, with the selected tasks as the denominator. Values in `summary.json` are fractions from 0 to 1.
@@ -203,6 +226,10 @@ Direct mode also reports the fraction of rubric checks passed and the number of 
 | Gain | Trial 2 completion minus Trial 1 completion. Multiply the difference by 100 to report percentage points. |
 
 Record the runtime and data revisions, task order, solver model, judge model and backend, reasoning effort, execution budget, and state retention settings with each result.
+
+### Feedback categories
+
+Trial 2 returns the names of rubric categories containing failed checks after the first unsuccessful submission. The released tasks group their checklist under **A. Deliverables**, so the feedback category is **Deliverables**. The agent receives the category name and can revise its submission within the remaining level budget.
 
 ### Relationship to the main experiment
 

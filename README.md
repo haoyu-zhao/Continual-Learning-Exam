@@ -26,12 +26,6 @@
 </p>
 
 <p align="center">
-  <a href="#todo"><img src="https://img.shields.io/badge/arXiv-Pending-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="arXiv: pending"></a>
-  <a href="#todo"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HF_Daily_Paper-Pending-FFCC00?style=flat" alt="HF Daily Paper: pending"></a>
-  <a href="#todo"><img src="https://img.shields.io/badge/%E2%9A%93_Harbor_Format-Planned-007EC6?style=flat" alt="Harbor format for CLE Lite: planned"></a>
-</p>
-
-<p align="center">
   <a href="#news">News</a> ·
   <a href="#about-cle">About CLE</a> ·
   <a href="#quick-start"><strong>Quick start</strong></a> ·
@@ -215,8 +209,9 @@ The [CLE Team page](https://haoyu-zhao.github.io/CLE/contributors/) lists contri
 ## 🗓️ Roadmap
 
 - [x] Release **CLE Lite** task cards, input files, and task packages.
+- [x] Release the **CLE Lite runtime** for Direct, CLE Trial 1, CLE Trial 2, and ordered task streams using the Harbor task packages.
 - [ ] Publish the final paper and project website; previews are linked above.
-- [ ] Release **Harbor support for CLE Lite**.
+- [ ] Publish the arXiv manuscript and Hugging Face paper page.
 
 <a name="citation"></a>
 
