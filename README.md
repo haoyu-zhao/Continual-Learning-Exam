@@ -22,7 +22,7 @@
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/"><img src="https://img.shields.io/badge/%F0%9F%8C%90_Website-CLE-0099CC?style=flat" alt="CLE website"></a>
   <a href="https://haoyu-zhao.github.io/CLE/assets/continual-learning-exam.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84_Paper-PDF-E34C26?style=flat" alt="Read the paper (PDF)"></a>
-  <a href="https://huggingface.co/Continual-Learning-Exam"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-Datasets-FFCC00?style=flat" alt="CLE datasets on Hugging Face"></a>
+  <a href="https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-CLE_Lite-FFCC00?style=flat" alt="CLE Lite on Hugging Face"></a>
 </p>
 
 <p align="center">
@@ -30,6 +30,7 @@
   <a href="#about-cle">About CLE</a> ·
   <a href="#quick-start"><strong>Quick start</strong></a> ·
   <a href="#tasks">Tasks</a> ·
+  <a href="#evaluation">Evaluation</a> ·
   <a href="#model-leaderboard">Leaderboard</a> ·
   <a href="#questions-and-contributions">Contribute</a> ·
   <a href="#todo">Roadmap</a> ·
@@ -51,7 +52,7 @@
 
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/#coverage-title">
-    <img src="assets/inside-cle.png" width="960" alt="CLE spans 12 professional domains: 120 tasks, 600 connected levels, 23,981 input files, and 16,125 rubric criteria.">
+    <img src="assets/cle-at-a-glance.png" width="960" alt="Figure 1. The full CLE benchmark's 120 tasks across 12 professional domains, with each task named on the outer ring.">
   </a>
 </p>
 
@@ -61,7 +62,7 @@ Each task is a ladder of **five connected assignments**, giving **600 levels** i
 
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/#carry">
-    <img src="assets/what-carries-forward.png" width="960" alt="Five research assignments—from organising a reading list to delivering a reproduction package—share user context, data dependencies, strategy, tools and skills, and domain knowledge.">
+    <img src="assets/cle-what-later-levels-reuse.png" width="960" alt="Figure 2. The five levels of PJM Day-ahead Launch, from benchmarking PJM's forecast to reviewing the weather events, linked by user context, data dependencies, strategy, tools and skills, and domain knowledge.">
   </a>
 </p>
 
@@ -87,10 +88,10 @@ Use **`run`** for one task. Use **`stream --setting cle`** for an ordered task s
 
 | Resource | Contents | Access |
 | :--- | :--- | :--- |
-| [Task Cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) | All 100 assignments and their input-file inventories | Public |
-| [Task Inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces) | Instructions and files supplied to agents | Public |
-| [Full Archive](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full) | Complete task packages, container environments, and evaluation material | Approval required |
-| [References](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Rubrics) | Evaluation rubrics and reference answers | Approval required |
+| [Task Cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/viewer/level_cards/lite) | All 100 assignments and their input-file inventories | Public |
+| [Workspaces](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces) | Instructions and files supplied to agents | Public |
+| [Rubrics](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Rubrics) | Evaluation rubrics and reference answers | Approval required |
+| [Full Packages](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full) | Complete task packages, container environments, simulated workplace services, runtime, and evaluation material | Approval required |
 
 ### Run an evaluation
 
@@ -124,11 +125,27 @@ For evaluation, use the runtime's `download` command in the guide; it also resto
 
 Explore selected public task examples in the task browser, with level instructions and their input materials. For downloadable packages, **CLE Lite** provides **20 tasks and 100 levels**. The main evaluation covers the full 120-task benchmark.
 
+<p align="center">
+  <img src="assets/cle-lite-domains.png" width="960" alt="Figure 3. The twenty CLE Lite tasks across nine professional domains, with each task named on the outer ring.">
+</p>
+
 | Resource | What you can explore |
 | :--- | :--- |
 | [Task browser](https://haoyu-zhao.github.io/CLE/tasks/) | Read assignments, follow dependencies across levels, and preview files. |
 | [CLE Lite task cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite) | Browse all 100 CLE Lite level instructions in the Hugging Face Dataset Viewer. |
 | [CLE Lite task inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces) | Download the agent-facing files for the 20 CLE Lite tasks. |
+
+<a name="evaluation"></a>
+
+## ✅ Evaluation
+
+CLE Lite contains **3,309 rubric criteria** across its **100 levels**. A level passes only when every criterion is satisfied. The chart below shows how these checks are distributed from `t1` to `t5`.
+
+<p align="center">
+  <img src="assets/cle-lite-rubrics.png" width="960" alt="Figure 4. The 3,309 CLE Lite rubric criteria by level: 477, 556, 647, 749 and 880.">
+</p>
+
+In CLE mode, **completion = cleared levels / (5 × number of evaluated tasks)**. Unreached levels count as failed. For example, clearing seven levels across two tasks gives **70% completion**. See the [evaluation guide](docs/evaluation.md#understand-the-scores) for result files, level pass rates, and Direct-mode scores.
 
 <a name="model-leaderboard"></a>
 
