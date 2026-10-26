@@ -42,11 +42,11 @@ Run the commands in **Bash, in the same shell and working directory**, so the pa
 uv tool install huggingface_hub
 hf auth login
 hf download Continual-Learning-Exam/CLE-Lite-Full \
-    --repo-type dataset --revision 258561d476dc9655fb30430920272631dc43e26a \
+    --repo-type dataset --revision 26ab77e5085476d59dc8c243b928e5b8ac490ef4 \
     --include 'runtime/*' --local-dir .
 
 TASK=008-operations-research-analyst
-DATA_REVISION=04014384175aeb218c4ba7188612b1c76e87d3fc
+DATA_REVISION=803301ec01b26ab594a5ab3cdcd855a14dcc26e1
 BUNDLE="./CLE-Lite/$TASK/harbor"
 RUNTIME_ENV="./.cle-runtime-$TASK"
 
@@ -60,14 +60,14 @@ codex login --device-auth
 
 docker build -t cle-lite-codex-worker:0.160.0-cle2 \
     -f runtime/codex-worker.Dockerfile runtime
-export RSI_CODEX_DOCKER_IMAGE=cle-lite-codex-worker:0.160.0-cle2
-export RSI_CODEX_AUTH_FILE="$HOME/.codex/auth.json"
-export RSI_CODEX_TRANSPORT=https
+export CLE_CODEX_DOCKER_IMAGE=cle-lite-codex-worker:0.160.0-cle2
+export CLE_CODEX_AUTH_FILE="$HOME/.codex/auth.json"
+export CLE_CODEX_TRANSPORT=https
 ```
 
 The first download retrieves the runtime scripts; the `download` command then retrieves the selected task, verifies its recorded file hashes, and restores required permissions and timestamps. `setup` installs the task's recorded Python and package versions with Harbor 0.22.0. The runtime and task data are pinned to separate revisions; record both when reporting results.
 
-If already logged in to Codex, skip `codex login` and point `RSI_CODEX_AUTH_FILE` at the existing login file.
+If already logged in to Codex, skip `codex login` and point `CLE_CODEX_AUTH_FILE` at the existing login file.
 
 ### 2. Configure the judge
 
@@ -91,10 +91,10 @@ This option uses the Codex login configured in step 1:
 ```bash
 JUDGE_BACKEND=codex
 JUDGE_MODEL=gpt-6.1-sol
-export RSI_CODEX_REASONING_EFFORT=low
+export CLE_CODEX_REASONING_EFFORT=low
 ```
 
-The `low` effort setting applies to both the solver and the Codex judge. To use the runtime defaults instead, run `unset RSI_CODEX_REASONING_EFFORT` before evaluation.
+The `low` effort setting applies to both the solver and the Codex judge. To use the runtime defaults instead, run `unset CLE_CODEX_REASONING_EFFORT` before evaluation.
 
 ### 3. Run one task
 
@@ -107,7 +107,7 @@ python3 runtime/cle_lite.py run \
     --setting direct --bundle "$BUNDLE" --env "$RUNTIME_ENV" \
     --agent codex --model openai/gpt-6.1-sol \
     --judge-backend "$JUDGE_BACKEND" --judge-model "$JUDGE_MODEL" \
-    --codex-auth "$RSI_CODEX_AUTH_FILE" --results ./results/direct-008-01
+    --codex-auth "$CLE_CODEX_AUTH_FILE" --results ./results/direct-008-01
 ```
 
 **CLE · Trial 1**
@@ -117,7 +117,7 @@ python3 runtime/cle_lite.py run \
     --setting cle --trial 1 --bundle "$BUNDLE" --env "$RUNTIME_ENV" \
     --agent codex --model openai/gpt-6.1-sol \
     --judge-backend "$JUDGE_BACKEND" --judge-model "$JUDGE_MODEL" \
-    --codex-auth "$RSI_CODEX_AUTH_FILE" --results ./results/cle-trial1-008-01
+    --codex-auth "$CLE_CODEX_AUTH_FILE" --results ./results/cle-trial1-008-01
 ```
 
 **CLE · Trial 2**
@@ -127,7 +127,7 @@ python3 runtime/cle_lite.py run \
     --setting cle --trial 2 --bundle "$BUNDLE" --env "$RUNTIME_ENV" \
     --agent codex --model openai/gpt-6.1-sol \
     --judge-backend "$JUDGE_BACKEND" --judge-model "$JUDGE_MODEL" \
-    --codex-auth "$RSI_CODEX_AUTH_FILE" --results ./results/cle-trial2-008-01
+    --codex-auth "$CLE_CODEX_AUTH_FILE" --results ./results/cle-trial2-008-01
 ```
 
 Inspect these files in the selected results directory:
@@ -166,7 +166,7 @@ python3 runtime/cle_lite.py stream \
     --setting cle --trial 1 --task-list runtime/lite-example-tasks.json \
     --agent codex --model openai/gpt-6.1-sol \
     --judge-backend "$JUDGE_BACKEND" --judge-model "$JUDGE_MODEL" \
-    --codex-auth "$RSI_CODEX_AUTH_FILE" --results ./results/cle-stream-trial1-01
+    --codex-auth "$CLE_CODEX_AUTH_FILE" --results ./results/cle-stream-trial1-01
 ```
 
 **CLE stream · Trial 2**
@@ -176,7 +176,7 @@ python3 runtime/cle_lite.py stream \
     --setting cle --trial 2 --task-list runtime/lite-example-tasks.json \
     --agent codex --model openai/gpt-6.1-sol \
     --judge-backend "$JUDGE_BACKEND" --judge-model "$JUDGE_MODEL" \
-    --codex-auth "$RSI_CODEX_AUTH_FILE" --results ./results/cle-stream-trial2-01
+    --codex-auth "$CLE_CODEX_AUTH_FILE" --results ./results/cle-stream-trial2-01
 ```
 
 Tasks run in the order specified by the task-list file. Its paths are relative to that file. See [Custom task lists](#custom-task-lists) to choose your own sequence.
@@ -212,7 +212,7 @@ The [Quick start](#quick-start) explains how to select Direct or CLE mode. Both 
 
 - **Progression:** in CLE mode, the task ends when the agent exhausts its allowed submissions without passing, or runs out of execution time. Unreached levels count as failed.
 - **Time budget:** each level uses the execution budget recorded in its task package. Trial 2 submissions share that budget. Grading time is excluded.
-- **Feedback:** Trial 2 identifies unmet rubric categories. The current release uses the category `Deliverables`; see [Feedback categories](#feedback-categories) for how this maps to the task checklist. Private rubrics, reference answers, and judge logs stay outside the solver workspace.
+- **Feedback:** Trial 2 identifies unmet rubric categories, the section titles of the level's rubric (for example `Fiscal quarters and trailing year`); see [Feedback categories](#feedback-categories) for how this maps to the task checklist. Private rubrics, reference answers, and judge logs stay outside the solver workspace.
 - **Errors:** runs interrupted by infrastructure or judge errors are marked invalid.
 
 For a CLE Lite evaluation, **completion = cleared levels / (5 × number of selected tasks)**. For example, clearing seven levels across two tasks gives 7/10, or **70% completion**. L1–L5 use the same cumulative definition as the table below, with the selected tasks as the denominator. Values in `summary.json` are fractions from 0 to 1.
@@ -229,7 +229,7 @@ Record the runtime and data revisions, task order, solver model, judge model and
 
 ### Feedback categories
 
-Trial 2 returns the names of rubric categories containing failed checks after the first unsuccessful submission. The released tasks group their checklist under **A. Deliverables**, so the feedback category is **Deliverables**. The agent receives the category name and can revise its submission within the remaining level budget.
+Trial 2 returns the names of rubric categories containing failed checks after the first unsuccessful submission. The categories are the section titles of each level's rubric page in CLE-Lite-Rubrics (for example `Fiscal quarters and trailing year`); the runtime's `rubric-categories.json` maps every check to its section, and another mapping can be supplied with `--rubric-categories`. The agent receives the category names and can revise its submission within the remaining level budget.
 
 ### Relationship to the main experiment
 
@@ -251,7 +251,7 @@ python3 runtime/cle_lite.py grade \
     --results ./results/direct-008-regrade-01
 ```
 
-For a Codex judge, export `RSI_CODEX_AUTH_FILE` as in setup. For OpenRouter, export `OPENROUTER_API_KEY`. Changing the judge for a **CLE** evaluation requires a new run or stream: its pass gates, permitted retries and later submissions depend on the judge's earlier decisions. Regrading old snapshots cannot reconstruct that interaction.
+For a Codex judge, export `CLE_CODEX_AUTH_FILE` as in setup. For OpenRouter, export `OPENROUTER_API_KEY`. Changing the judge for a **CLE** evaluation requires a new run or stream: its pass gates, permitted retries and later submissions depend on the judge's earlier decisions. Regrading old snapshots cannot reconstruct that interaction.
 
 ## Troubleshooting
 

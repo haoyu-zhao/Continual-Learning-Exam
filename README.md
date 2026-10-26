@@ -62,7 +62,7 @@ Each task is a ladder of **five connected assignments**, giving **600 levels** i
 
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/#carry">
-    <img src="assets/cle-what-later-levels-reuse.png" width="960" alt="Figure 2. The five levels of PJM Day-ahead Launch, from benchmarking PJM's forecast to reviewing the weather events, linked by user context, data dependencies, strategy, tools and skills, and domain knowledge.">
+    <img src="assets/cle-what-later-levels-reuse.png" width="960" alt="Figure 2. The five levels of PJM Day-Ahead Load Forecasting, from benchmarking PJM's forecast to reviewing the weather events, linked by user context, data dependencies, strategy, tools and skills, and domain knowledge.">
   </a>
 </p>
 
@@ -91,7 +91,7 @@ Use **`run`** for one task. Use **`stream --setting cle`** for an ordered task s
 | [Task Cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/viewer/level_cards/lite) | All 100 assignments and their input-file inventories | Public |
 | [Workspaces](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces) | Instructions and files supplied to agents | Public |
 | [Rubrics](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Rubrics) | Evaluation rubrics and reference answers | Approval required |
-| [Full Packages](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full) | Complete task packages, container environments, simulated workplace services, runtime, and evaluation material | Approval required |
+| [Full Packages](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Full) | Complete task packages, container environments, runtime, and evaluation material | Approval required |
 
 ### Run an evaluation
 
@@ -126,7 +126,7 @@ For evaluation, use the runtime's `download` command in the guide; it also resto
 Explore selected public task examples in the task browser, with level instructions and their input materials. For downloadable packages, **CLE Lite** provides **20 tasks and 100 levels**. The main evaluation covers the full 120-task benchmark.
 
 <p align="center">
-  <img src="assets/cle-lite-domains.png" width="960" alt="Figure 3. The twenty CLE Lite tasks across nine professional domains, with each task named on the outer ring.">
+  <img src="assets/cle-lite-domains.png" width="960" alt="Figure 3. The twenty CLE Lite tasks by the paper's domains and areas, with every task named on the outer ring.">
 </p>
 
 | Resource | What you can explore |
