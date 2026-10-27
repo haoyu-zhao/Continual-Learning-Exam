@@ -21,7 +21,7 @@
 
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/"><img src="https://img.shields.io/badge/%F0%9F%8C%90_Website-CLE-0099CC?style=flat" alt="CLE website"></a>
-  <a href="https://haoyu-zhao.github.io/CLE/assets/continual-learning-exam.pdf"><img src="https://img.shields.io/badge/%F0%9F%93%84_Paper-PDF-E34C26?style=flat" alt="Read the paper (PDF)"></a>
+  <a href="https://arxiv.org/abs/2610.33956"><img src="https://img.shields.io/badge/arXiv-2610.33956-B31B1B?style=flat" alt="Paper on arXiv: 2610.33956"></a>
   <a href="https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-CLE_Lite-FFCC00?style=flat" alt="CLE Lite on Hugging Face"></a>
 </p>
 
@@ -41,6 +41,7 @@
 
 ## 📰 News
 
+- **2026-10-25 · Paper released.** The CLE paper is now available on [arXiv](https://arxiv.org/abs/2610.33956) and [Hugging Face Papers](https://huggingface.co/papers/2610.33956).
 - **2026-10-22 · Two evaluation modes.** Run all five levels with **Direct**, or use **CLE** to advance only after passing each level. CLE supports both Trial 1 and Trial 2. See the [Quick start](#quick-start) for commands.
 - **2026-10-20 · CLE Lite released.** Explore **20 professional tasks and 100 connected levels**, with public [task cards](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite/viewer/level_cards/lite) and [task inputs](https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite-Workspaces).
 
@@ -227,21 +228,29 @@ The [CLE Team page](https://haoyu-zhao.github.io/CLE/contributors/) lists contri
 
 - [x] Release **CLE Lite** task cards, input files, and task packages.
 - [x] Release the **CLE Lite runtime** for Direct, CLE Trial 1, CLE Trial 2, and ordered task streams using the Harbor task packages.
-- [ ] Publish the final paper and project website; previews are linked above.
-- [ ] Publish the arXiv manuscript and Hugging Face paper page.
+- [x] Publish the [project website](https://haoyu-zhao.github.io/CLE/).
+- [x] Publish the [arXiv paper](https://arxiv.org/abs/2610.33956) and [Hugging Face paper page](https://huggingface.co/papers/2610.33956).
 
 <a name="citation"></a>
 
 ## 📝 Citation
 
-For now, please use the provisional manuscript citation:
+If you use CLE in your research, please cite the [paper](https://arxiv.org/abs/2610.33956):
 
 ```bibtex
-@misc{cle2026continual,
-  title  = {Continual Learning Exam},
-  author = {{CLE Team}},
-  year   = {2026},
-  note   = {Manuscript},
-  url    = {https://haoyu-zhao.github.io/CLE/}
+@misc{zhao2026continuallearningexambenchmarking,
+  title = {Continual Learning Exam: Benchmarking Long-Horizon RSI and Experiential Learning in LLM Agents},
+  author = {Haoyu Zhao and Sitian Tu and Yuxuan Huang and Huichi Zhou
+            and Zhangyue Yin and Jiahao Huang and Jingyuan Xu and Tianmiao Shi
+            and Jin Shi and Nianxi Zhang and Yangmiao Zhang and Zhuolang Chan
+            and Huiyan Hu and Chenchao Sheng and Yaqing Luo and Yue Chen
+            and Huaxiu Yao and Meng Fang and Jun Wang},
+  year = {2026},
+  eprint = {2610.33956},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.LG},
+  url = {https://arxiv.org/abs/2610.33956}
 }
 ```
+
+[Download BibTeX](citation.bib) · [View on arXiv](https://arxiv.org/abs/2610.33956)

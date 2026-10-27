@@ -1,0 +1,92 @@
+cff-version: 1.2.0
+message: If you use CLE in your research, please cite the paper below.
+type: dataset
+title: Continual Learning Exam
+authors:
+- family-names: Zhao
+  given-names: Haoyu
+- family-names: Tu
+  given-names: Sitian
+- family-names: Huang
+  given-names: Yuxuan
+- family-names: Zhou
+  given-names: Huichi
+- family-names: Yin
+  given-names: Zhangyue
+- family-names: Huang
+  given-names: Jiahao
+- family-names: Xu
+  given-names: Jingyuan
+- family-names: Shi
+  given-names: Tianmiao
+- family-names: Shi
+  given-names: Jin
+- family-names: Zhang
+  given-names: Nianxi
+- family-names: Zhang
+  given-names: Yangmiao
+- family-names: Chan
+  given-names: Zhuolang
+- family-names: Hu
+  given-names: Huiyan
+- family-names: Sheng
+  given-names: Chenchao
+- family-names: Luo
+  given-names: Yaqing
+- family-names: Chen
+  given-names: Yue
+- family-names: Yao
+  given-names: Huaxiu
+- family-names: Fang
+  given-names: Meng
+- family-names: Wang
+  given-names: Jun
+url: https://haoyu-zhao.github.io/CLE/
+repository-code: https://github.com/haoyu-zhao/Continual-Learning-Exam
+preferred-citation:
+  type: article
+  title: 'Continual Learning Exam: Benchmarking Long-Horizon RSI and Experiential Learning in LLM Agents'
+  authors:
+  - family-names: Zhao
+    given-names: Haoyu
+  - family-names: Tu
+    given-names: Sitian
+  - family-names: Huang
+    given-names: Yuxuan
+  - family-names: Zhou
+    given-names: Huichi
+  - family-names: Yin
+    given-names: Zhangyue
+  - family-names: Huang
+    given-names: Jiahao
+  - family-names: Xu
+    given-names: Jingyuan
+  - family-names: Shi
+    given-names: Tianmiao
+  - family-names: Shi
+    given-names: Jin
+  - family-names: Zhang
+    given-names: Nianxi
+  - family-names: Zhang
+    given-names: Yangmiao
+  - family-names: Chan
+    given-names: Zhuolang
+  - family-names: Hu
+    given-names: Huiyan
+  - family-names: Sheng
+    given-names: Chenchao
+  - family-names: Luo
+    given-names: Yaqing
+  - family-names: Chen
+    given-names: Yue
+  - family-names: Yao
+    given-names: Huaxiu
+  - family-names: Fang
+    given-names: Meng
+  - family-names: Wang
+    given-names: Jun
+  year: 2026
+  month: 10
+  journal: arXiv
+  doi: 10.48550/arXiv.2610.33956
+  url: https://arxiv.org/abs/2610.33956

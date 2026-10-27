@@ -233,7 +233,7 @@ Trial 2 returns the names of rubric categories containing failed checks after th
 
 ### Relationship to the main experiment
 
-The [CLE main experiment](https://haoyu-zhao.github.io/CLE/assets/continual-learning-exam.pdf) evaluates **120 tasks and 600 levels** in a fixed serial order, retaining the agent's harness state across tasks. It uses DeepSeek V4 Flash for model-based grading.
+The [CLE main experiment](https://arxiv.org/abs/2610.33956) evaluates **120 tasks and 600 levels** in a fixed serial order, retaining the agent's harness state across tasks. It uses DeepSeek V4 Flash for model-based grading.
 
 CLE mode follows the same pass-to-advance and submission rules: Trial 1 allows one submission per level; Trial 2 adds category feedback and one revision after a failed first submission. Use `stream --setting cle` to retain conversation and configured memory across the selected tasks. Each task starts with its own files and application services.
 
