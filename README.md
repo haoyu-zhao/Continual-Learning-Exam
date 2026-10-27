@@ -22,7 +22,7 @@
 <p align="center">
   <a href="https://haoyu-zhao.github.io/CLE/"><img src="https://img.shields.io/badge/%F0%9F%8C%90_Website-CLE-0099CC?style=flat" alt="CLE website"></a>
   <a href="https://arxiv.org/abs/2610.33956"><img src="https://img.shields.io/badge/arXiv-2610.33956-B31B1B?style=flat" alt="Paper on arXiv: 2610.33956"></a>
-  <a href="https://huggingface.co/datasets/Continual-Learning-Exam/CLE-Lite"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-CLE_Lite-FFCC00?style=flat" alt="CLE Lite on Hugging Face"></a>
+  <a href="https://huggingface.co/papers/2610.33956"><img src="https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-Paper-FFCC00?style=flat" alt="Paper on Hugging Face"></a>
 </p>
 
 <p align="center">
